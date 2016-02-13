@@ -123,34 +123,7 @@ function cmd-help {
   echo "  Isaias Bartelborth"
   echo "  isaias.b@gmx.de"
   echo
-  echo "INSTALLATION"
-  echo
-  echo "to install this tool you can put the path.sh file"
-  echo "into somewhere accessible location e.g. ~/path.sh."
-  echo "then there are two options to install the tool:"
-  echo "manual vs automatic loading. the manual loading"
-  echo "is performed on demand, automatic is performed on"
-  echo "every shell incarnation."
-  echo
-  echo "manual installation:"
-  echo "  source ~/path.sh && path backup"
-  echo
-  echo "the manual installation command just sources the"
-  echo "contents to the current shell instance and creates"
-  echo "a backup of the current path using the sourced tool"
-  echo
-  echo "automatic:"
-  echo "  echo 'source ~/path.sh && path backup' >> ~/.bashrc"
-  echo
-  echo "the automatic installation command just takes the"
-  echo "manual installation command and appends it to the"
-  echo "current ~/.bashrc file and should only performed"
-  echo "once"
 }
-
-
-
-## main entry point
 
 function path {
   doecho=false
@@ -161,11 +134,6 @@ function path {
   if [ $# = 0 ]; then cmd-help; fi
 }
 
-export -f path
+## main entry point
 
-function show-help-when-not-sourced {
-  # http://stackoverflow.com/a/2684300/3165552
-  [[ "${BASH_SOURCE[0]}" == "${0}" ]] && cmd-help
-}
-
-show-help-when-not-sourced
+path $@

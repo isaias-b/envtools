@@ -88,45 +88,41 @@ Commands planned for the future:
 # Installation
 
 To install this tool you can put the path.sh file
-into somewhere accessible location e.g. ~/path.sh.
+into some accessible location e.g. ~/path.sh.
 
 ```bash
-wget .../path.sh ~
-
+# fully qualified directory
+installDir=...
+pathSrc=$installDir/src/main
+# clone it to install directory
+git clone https://github.com/isaias-b/envtools $installDir
+# create a symlink to path.sh
+sudo ln -s $pathSrc/path.sh /usr/local/bin/path
 ```
-Then there are two options to install the tool:
-Manual vs automatic loading. With manual loading
-it is performed explicitly on demand, automatic 
-is performed on every shell incarnation.
 
-Maybe in the future there will be three
-configurable modes like:
- - Manual 
- - Shell (semi-automatic)
- - Interactive (automatic)
+# Backup Strategies
+A handy function is the backup function, which
+can be used to reset the path to a certain state.
 
-## Manual Loading
+## Manual
+The backups can be created manually then the
+`path backup` command should suffice.
+
+To reset to the backup state just use `path reset`.
+
+## Automatic
+In most cases, creating the backup should take place
+every time when a shell terminal is instantiated.
+
+In order to setup this backup strategy you can
+put the following line into your `~/.bash_profile`,
+`~/.bashrc` or wherever suits your environment needs.
 
 ```bash
-source ~/path.sh && path backup
+echo 'path backup' >> ~/.bashrc
 ```
 
-This will just source the file on demand expose
-the `path` function during the shell session.
-Furthermore, it will create a backup of the $PATH
-variable.
-
-## Automatic Loading
-
-```bash
-echo 'source ~/path.sh && path backup' >> ~/.bashrc
-```
-
-The automatic installation command just takes the
-manual installation command and appends it to the
-current ~/.bashrc file and should only performed
-once.
-
-This will make the `path` utility available to
-all subsequent shell sessions for this user, and
-will always create a fresh backup on startup.
+# Loading Strategies
+## Manual
+## Interactive
+## Automatic
