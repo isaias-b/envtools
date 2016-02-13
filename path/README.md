@@ -74,6 +74,7 @@ Commands planned for the future:
 - [ ] add .bin from npm
 - [ ] add all bin subfolders from bower
 - [ ] add all bin subfolders from composer
+- [ ] edit short hands
 
 # Examples
 
