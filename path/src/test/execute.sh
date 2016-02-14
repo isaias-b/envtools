@@ -53,6 +53,7 @@ function executeSingle() {
   outputFile=$testcase.output~
   errorFile=$testcase.error~
 
+  path reset
   cleanUp
   printf "executing testcase $testcase ... "
   ./$testcase 2> $errorFile

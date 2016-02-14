@@ -4,6 +4,7 @@ version=0.1
 configFile=PATH
 savedFile=.PATH~saved
 backupFile=~/.PATH~backup
+pathFile=.PATH
 doecho=false
 
 function realpath { echo "$(cd "$1" ; pwd)"; };
@@ -23,7 +24,10 @@ function myecho {
 function echo-done {
   myecho "done"
 }
-
+function set-path {
+  PATH="$1" 
+  echo "$PATH" > $pathFile
+}
 
 
 ## path commands
@@ -40,17 +44,17 @@ function cmd-save {
 
 function cmd-load {
   myecho "load \$PATH from $savedFile"
-  PATH=$(cat $savedFile) && echo-done
+  set-path $(cat $savedFile) && echo-done
 }
 
 function cmd-reset {
   myecho "load \$PATH from $backupFile"
-  PATH=$(cat $backupFile) && echo-done
+  set-path $(cat $backupFile) && echo-done
 }
 
 function cmd-config {
   myecho "configure \$PATH built from $configFile"
-  PATH=$(build) && echo-done
+  set-path $(echo "$(build)") && echo-done
 }
 
 function cmd-echo-on {
