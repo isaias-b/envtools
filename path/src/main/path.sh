@@ -67,7 +67,7 @@ function cmd-echo-off {
 
 function cmd-show-config {
   myecho "show conifguration built from $configFile"
-  cat $configFile | sed 's/:/\n/g'
+  myecho "$(cat $configFile | sed 's/:/\n/g')"
   build | sed 's/:/\n/g'
 }
 
