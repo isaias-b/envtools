@@ -1,0 +1,14 @@
+{
+  "name": "npm-project",
+  "description": "npm-project",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+	"url": "https://github.com/isaias-b/envtools"
+  },
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13"
+  },
+  "license": "MIT"
+}
