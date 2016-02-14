@@ -65,7 +65,9 @@ function cmd-echo-off {
   doecho=false
 }
 
-
+function cmd-get-source {
+  echo "$0"
+}
 
 ## path show- commands
 
@@ -116,6 +118,7 @@ function cmd-help {
   echo "  show          shows contents of the \$PATH environment variable"
   echo "  show-saved    shows contents of backup-file"
   echo "  show-config   shows built path using config-file"
+  echo "  get-source    retrieves the location of the path.sh file"
   echo
   echo "examples:"
   echo "  path save show-bak      save current \$PATH and show backup-file"
