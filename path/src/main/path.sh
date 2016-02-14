@@ -134,6 +134,14 @@ function path {
   if [ $# = 0 ]; then cmd-help; fi
 }
 
+function isSourced {
+  # http://stackoverflow.com/a/2684300/3165552
+  [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+}
+
 ## main entry point
 
-path $@
+if isSourced
+then
+  path $@
+fi
