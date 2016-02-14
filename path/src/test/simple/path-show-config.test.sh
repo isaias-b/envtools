@@ -1,7 +1,7 @@
 #!/bin/bash
 cd $(dirname $0)
 
-source ../main/path.sh
+source ../../main/path.sh
 
 expected=$PATH
 expected=$expected:$(realpath .bin)
