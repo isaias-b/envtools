@@ -8,9 +8,14 @@ ERROR='\033[0;31m'   # red
 BOLD='\033[1;33m'    # bold light yellow
 NC='\033[0m'         # none
 
+function cols() {
+  expr $(tput cols) - 1
+}
+
 function clearline() {
   printf '\r'
-  printf ' %0.s' {0..100}
+  amount=$(eval echo "{0..$(cols)}")
+  printf ' %0.s' $amount
   printf '\r'
 }
 
@@ -55,7 +60,7 @@ function executeSingle() {
 
   path reset
   cleanUp
-  printf "executing testcase $testcase ... "
+  printf "executing testcase ${testcase:0:50} ..."
   ./$testcase 2> $errorFile
   rc=$?
   clearline
