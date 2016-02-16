@@ -69,7 +69,15 @@ function cmd-get-source {
   echo "$0"
 }
 
+
+
 ## path show- commands
+
+function cmd-show-commands {
+  pattern="function cmd"
+  pattern+="-"
+  cat "$0" | grep "$pattern" | sed -e "s/$pattern//g" | sed -e "s/ {//g"
+}
 
 function cmd-show-config {
   myecho "show conifguration built from $configFile"
