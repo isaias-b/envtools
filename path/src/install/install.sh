@@ -13,7 +13,7 @@ wget -nv -O $installDir/path.completion      $downloadUrl/path.completion
 
 mkdir -p $libraryDir
 
-cp -f /home/ubuntu-dev/envtools/path/src/main/path.sh                   $libraryDir/path.sh
+mv -f $installDir/path.sh                   $libraryDir/path.sh
 mv -f $installDir/path.bashrc               $libraryDir/path.bashrc
 mv -f $installDir/path.completion           $completionDir/path
 
