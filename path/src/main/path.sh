@@ -7,6 +7,7 @@ backupFile=~/.PATH~backup
 pathFile=.PATH
 doecho=false
 
+
 function realpath { echo "$(cd "$1" ; pwd)"; };
 
 function build {
@@ -66,7 +67,7 @@ function cmd-echo-off {
 }
 
 function cmd-get-source {
-  echo "$0"
+  echo "$PATH_HOME/path.sh"
 }
 
 
@@ -76,7 +77,7 @@ function cmd-get-source {
 function cmd-show-commands {
   pattern="function cmd"
   pattern+="-"
-  cat "$0" | grep "$pattern" | sed -e "s/$pattern//g" | sed -e "s/ {//g"
+  cat $(cmd-get-source) | grep "$pattern" | sed -e "s/$pattern//g" | sed -e "s/ {//g"
 }
 
 function cmd-show-config {
